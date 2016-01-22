@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Lucub</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Bootstrap -->
+    <link href="css/bootstrap.min.css" rel="stylesheet" media="screen">
+    <style>
+      body {
+        padding-top: 60px; /* 60px to make the container go all the way to the bottom of the topbar */
+      }
+    </style>
+  </head>
+  <body>
+    <div class="navbar navbar-inverse navbar-fixed-top">
+      <div class="navbar-inner">
+        <div class="container">
+          <a class="brand" href="/">Lucub</a>
+        </div>
+      </div>
+    </div>
+    <div class="container">
+      <div class="row">
+        <div class="span3">
+          <form action="/login" method="POST">
+            <fieldset>
+              <legend>Welcome</legend>
+              <label>Email</label>
+              <input type="text" name="email">
+              <label>Password</label>
+              <input type="password" name="password"><br>
+              <input type="submit" class="btn btn-primary" value="Log In">
+              <input type="button" class="btn" value="Sign Up" onclick="location.href='/signup'">
+              </form>
+            </fieldset>
+          </form>
+        </div>
+      </div>
+    </div>
+    <script src="http://code.jquery.com/jquery.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+  </body>
+</html>

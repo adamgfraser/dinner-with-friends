@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Lucub</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Bootstrap -->
+    <link href="css/bootstrap.min.css" rel="stylesheet" media="screen">
+    <style>
+      body {
+        padding-top: 60px; /* 60px to make the container go all the way to the bottom of the topbar */
+      }
+    </style>
+  </head>
+  <body>
+
+    <div class="navbar navbar-inverse navbar-fixed-top">
+      <div class="navbar-inner">
+        <div class="container">
+          <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+            <span class="icon-bar"></span>
+          </button>
+          <a class="brand" href="/">Lucub</a>
+          <div class="nav-collapse collapse">
+            <ul class="nav">
+              <li><a href="/logout">Log Out</a></li>
+            </ul>
+          </div><!--/.nav-collapse -->
+        </div>
+      </div>
+    </div>
+
+    <div class="container">
+      <div class="row">
+        <div class="span12">
+          <form>
+            <fieldset>
+              <input type="button" class="btn btn-primary" value="New Meal" onclick="location.href='/meals/new'">
+            </fieldset>
+          </form>
+        </div>
+      </div>
+      <div class="row">
+        <div class="span12">
+          <table class="table">
+            <thead>
+              <tr>
+                <th>Name</th>
+                <th>Date</th>
+                <th>Time</th>
+                <th>Location</th>
+                <th>Restaurant</th>
+                <th>Guests</th>
+                <th>Vote</th>
+                <th>Edit</th>
+                <th>Cancel</th>
+              </tr>
+            </thead>
+            <tbody>
+              <% @meals.each do |meal| %>
+                <tr>
+                  <tr><%= meal.name %></tr>
+                  <tr><%= meal.date %></tr>
+                  <tr><%= meal.time %></tr>
+                  <tr><%= meal.location %></tr>
+                  <tr><%= meal.restaurant %></tr>
+                  <tr><%= meal.users %></tr>
+                  <tr></tr>
+                  <tr></tr>
+                  <tr></tr>
+                </tr>
+              <% end %>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <script src="http://code.jquery.com/jquery.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+  </body>
+</html>
