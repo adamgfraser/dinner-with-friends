@@ -66,7 +66,7 @@ class ApplicationController < Sinatra::Base
   get '/meals/new' do
     if session[:id]
       @meals = Meal.all
-      erb :"users"
+      erb :"meals/new"
     else
       redirect to '/'
     end
