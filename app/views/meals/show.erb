@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Lucub</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Bootstrap -->
+    <link href="/css/bootstrap.min.css" rel="stylesheet" media="screen">
+    <link href="/css/select2-bootstrap.min.css" rel="stylesheet" media="screen">
+    <link href="//cdnjs.cloudflare.com/ajax/libs/select2/4.0.1/css/select2.min.css" rel="stylesheet" />
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/select2/4.0.1/js/select2.min.js"></script>
+    <style>
+      body {
+        padding-top: 60px; /* 60px to make the container go all the way to the bottom of the topbar */
+      }
+      select {
+        width: 100%
+      }
+      .margin-top {
+        margin-top: 10px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="navbar navbar-inverse navbar-fixed-top">
+      <div class="navbar-inner">
+        <div class="container">
+          <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+            <span class="icon-bar"></span>
+          </button>
+          <a class="brand" href="/">Lucub</a>
+          <div class="nav-collapse collapse">
+            <ul class="nav">
+              <li><a href="/logout">Log Out</a></li>
+            </ul>
+          </div><!--/.nav-collapse -->
+        </div>
+      </div>
+    </div>
+
+    <div class="container">
+      <div class="row">
+        <div class="span12">
+          <h1><%= @meal.name %></h1>
+          <h4><%= @meal.date.strftime("%B %e") + ", " + @meal.time.strftime("%I:%M %p") + " - " + @meal.location %></h4>
+          <h4><%= @meal.users.map{|user| user.name}.join(", ") %></h4>
+          <% if @restaurant %>
+            <h2><%= @restaurant.name %></h2>
+            <h4>
+              <img src="<%= @restaurant.rating_img_url_large%>" class="img-responsive">
+              <%= @restaurant.review_count %> reviews
+            </h4>
+            <h3><%= @restaurant.categories.map{|category| category.title}.join(", ") %></h3>
+            <h3><%= @restaurant.display_address.gsub(/[\"\[\]]/, "") %></h3>
+            <h3><%= @restaurant.display_phone %></h3>       
+            <h4><%= @restaurant.snippet_text %></h4>
+          <% end %>
+        </div>
+      </div>
+    </div>
+
+  </body>
+</html>

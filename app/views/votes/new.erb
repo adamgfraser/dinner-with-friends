@@ -51,17 +51,9 @@
     <div class="container">
       <div class="row">
         <div class="span12">
-          <form action="/meals" method="POST">
+          <form action="/meals/<%= @meal.id %>/votes" method="POST">
           <fieldset>
-            <legend>New Meal</legend>
-            <label>Name</label>
-            <input type="text" name="name">
-            <label>Date</label>
-            <input type="date" name="date">
-            <label>Time</label>
-            <input type="time" name="time" step=900>
-            <label>Location</label>
-            <input type="string" name="location">
+            <legend>Vote</legend>
             <label class="margin-top">What are you in the mood for?</label>
             <select class="form-control" name="likes[]" id="likes" multiple="multiple">
               <% @categories.each do |category| %>
@@ -74,13 +66,7 @@
                 <option value="<%= category.id %>"><%= category.title %></option>
               <% end %>
             </select>
-            <label class="margin-top">Is anyone joining you?</label>
-            <select class="form-control" name="guests[]" id="guests" multiple="multiple">
-              <% @users.each do |user| %>
-                <option value="<%= user.id %>"><%= user.name %></option>
-              <% end %>
-            </select>
-            <input type="submit" class="btn btn-primary margin-top" value="Create Meal">
+            <input type="submit" class="btn btn-primary margin-top" value="Vote">
             </fieldset>
           </form>
         </div>

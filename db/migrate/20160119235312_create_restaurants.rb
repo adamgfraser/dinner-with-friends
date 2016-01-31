@@ -1,7 +1,7 @@
 class CreateRestaurants < ActiveRecord::Migration
   def change
     create_table :restaurants do |t|
-      t.integer :yelp_id
+      t.string :yelp_id
       t.string :name
       t.string :image_url
       t.string :url

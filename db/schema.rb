@@ -34,6 +34,7 @@ ActiveRecord::Schema.define(version: 20160121003343) do
     t.time    "time"
     t.string  "location"
     t.integer "restaurant_id"
+    t.integer "host_id"
   end
 
   create_table "restaurant_categories", force: :cascade do |t|
@@ -42,7 +43,7 @@ ActiveRecord::Schema.define(version: 20160121003343) do
   end
 
   create_table "restaurants", force: :cascade do |t|
-    t.integer "yelp_id"
+    t.string  "yelp_id"
     t.string  "name"
     t.string  "image_url"
     t.string  "url"

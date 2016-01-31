@@ -6,6 +6,7 @@ class CreateMeals < ActiveRecord::Migration
       t.time :time
       t.string :location
       t.integer :restaurant_id
+      t.integer :host_id
     end
   end
 end

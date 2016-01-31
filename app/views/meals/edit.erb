@@ -51,38 +51,68 @@
     <div class="container">
       <div class="row">
         <div class="span12">
-          <form action="/meals" method="POST">
+          <form action="/meals/<%= @meal.id %>" method="POST">
           <fieldset>
-            <legend>New Meal</legend>
+            <legend>Edit Meal</legend>
             <label>Name</label>
-            <input type="text" name="name">
+            <input type="text" name="name" value="<%= @meal.name %>">
             <label>Date</label>
-            <input type="date" name="date">
+            <input type="date" name="date" value="<%= @meal.date %>">
             <label>Time</label>
-            <input type="time" name="time" step=900>
+            <input type="time" name="time" value="<%= @meal.time.strftime("%T") %>">
             <label>Location</label>
-            <input type="string" name="location">
+            <input type="string" name="location" value="<%= @meal.location %>">
             <label class="margin-top">What are you in the mood for?</label>
             <select class="form-control" name="likes[]" id="likes" multiple="multiple">
               <% @categories.each do |category| %>
-                <option value="<%= category.id %>"><%= category.title %></option>
+                <% if @likes.include?(category) %>
+                  <option value="<%= category.id %>" selected="selected">
+                    <%= category.title %>
+                  </option>
+                <% else %>
+                  <option value="<%= category.id %>">
+                    <%= category.title %>
+                  </option>
+                <% end %>
               <% end %>
             </select>
             <label class="margin-top">Is there anything you don't want to eat?</label>
             <select class="form-control" name="dislikes[]" id="dislikes" multiple="multiple">
               <% @categories.each do |category| %>
-                <option value="<%= category.id %>"><%= category.title %></option>
+                <% if @dislikes.include?(category) %>
+                  <option value="<%= category.id %>" selected="selected">
+                    <%= category.title %>
+                  </option>
+                <% else %>
+                  <option value="<%= category.id %>">
+                    <%= category.title %>
+                  </option>
+                <% end %>
               <% end %>
             </select>
             <label class="margin-top">Is anyone joining you?</label>
             <select class="form-control" name="guests[]" id="guests" multiple="multiple">
               <% @users.each do |user| %>
-                <option value="<%= user.id %>"><%= user.name %></option>
+                <% if @meal.users.include?(user) %>
+                  <option value="<%= user.id %>" selected="selected">
+                    <%= user.name %>
+                  </option>
+                <% else %>
+                  <option value="<%= user.id %>">
+                    <%= user.name %>
+                  </option>
+                <% end %>
               <% end %>
             </select>
-            <input type="submit" class="btn btn-primary margin-top" value="Create Meal">
+            <input type="submit" class="btn btn-primary margin-top" value="Edit Meal">
+
             </fieldset>
           </form>
+          <% if @meal.restaurant %>
+            <form action="/meals/<%= @meal.id %>/restaurants/1" method="GET">
+              <input type="submit" class="btn btn-warning" value="Change Restaurant">
+            </form>
+          <% end %>
         </div>
       </div>
     </div>
